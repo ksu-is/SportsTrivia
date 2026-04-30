@@ -24,8 +24,19 @@ def show_high_score():
         top_player = ""
 
         for line in file:
-            data = line.strip().split(",")
-            score = int(data[1])
+            line = line.strip()
+            if line == "":
+                continue
+
+            data = line.split(",")
+
+            if len(data) < 2:
+                continue
+
+            try:
+                score = int(data[1])
+            except:
+                continue
 
             if score > high_score:
                 high_score = score
@@ -35,9 +46,12 @@ def show_high_score():
 
         if top_player != "":
             print(f"\nHigh Score: {top_player} with {high_score}")
+        else:
+            print("No scores yet.")
+
     except:
         print("No scores yet.")
-
+        
 def main():
     print("Welcome to the Ultimate Sports Quiz!")
     name = input("Enter your name: ")
