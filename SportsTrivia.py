@@ -38,3 +38,52 @@ def show_high_score():
     except:
         print("No scores yet.")
 
+def main():
+    print("Welcome to the Ultimate Sports Quiz!")
+    name = input("Enter your name: ")
+
+    score = 0
+
+    score += ask_question(
+        "1. How many players are on a basketball team on the court?",
+        ["A. 3", "B. 5", "C. 7", "D. 9"],
+        "B"
+    )
+
+    score += ask_question(
+        "2. Which NFL team won Super Bowl LVII?",
+        ["A. Chiefs", "B. Eagles", "C. Rams", "D. Patriots"],
+        "A"
+    )
+
+    score += ask_question(
+        "3. What sport is known as 'the beautiful game'?",
+        ["A. Basketball", "B. Baseball", "C. Soccer", "D. Tennis"],
+        "C"
+    )
+
+    score += ask_question(
+        "4. How many points is a touchdown worth?",
+        ["A. 3", "B. 6", "C. 7", "D. 2"],
+        "B"
+    )
+
+    score += ask_question(
+        "5. Which player is known as 'King James'?",
+        ["A. Kobe Bryant", "B. Michael Jordan", "C. LeBron James", "D. Steph Curry"],
+        "C"
+    )
+
+    print(f"\n{name}, your final score is: {score}/5")
+
+    save_score(name, score)
+    show_high_score()
+
+    replay = input("\nPlay again? (yes/no): ").lower()
+    if replay == "yes":
+        main()
+    else:
+        print("Thanks for playing!")
+
+
+main()
